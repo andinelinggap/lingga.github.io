@@ -473,9 +473,12 @@ main { overflow-x: hidden; }
 }
 
 .hero-banner {
-  max-width: 500px;
-  width: 125%;
-  margin-bottom: 30px;
+  display: flex; /* Atur tata letak untuk memusatkan gambar */
+  justify-content: center; /* Pusatkan secara horizontal */
+  align-items: center; /* Pusatkan secara vertikal */
+  min-height: 150vh; /* Sesuaikan tinggi kontainer agar memenuhi layar */
+  margin-top: -75px; /* Hilangkan margin default */
+  display: block; /* Hindari elemen inline untuk gambar */
 }
 
 :is(.hero-social-list, .scroll-down) { display: none; }
@@ -576,7 +579,7 @@ main { overflow-x: hidden; }
 
 /*-----------------------------------*\
  * #SKILLS
-\*-----------------------------------*/
+\*-----------------------------------*/ 
 
 .skills { padding-block: var(--section-padding); }
 
@@ -659,79 +662,61 @@ main { overflow-x: hidden; }
   opacity: 1;
 }
 
-
+*/
 
 
 
 /*-----------------------------------*\
- * #PROJECT
+  #PORTFOLIO
 \*-----------------------------------*/
 
-.project { padding-block: var(--section-padding); }
+.portfolio .section-title { margin-block-end: 18px; }
 
-.project-list > li { margin-bottom: 25px; }
+.portfolio .section-text { margin-block-end: 80px; }
 
-.project-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-12);
-  box-shadow: 2px 4px 6px hsla(0, 0%, 0%, 0.2);
+.portfolio-list {
+  display: grid;
+  gap: 60px;
 }
 
-.project-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  transition: var(--transition-1);
+.portfolio-card {
+  background-color: var(--independence);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 120px 20px;
+  border-radius: var(--radius-20);
+  font-family: var(--ff-barlow);
+  color: var(--white);
+  font-weight: var(--fw-600);
+  transition: var(--transition-2);
 }
 
-.project-card:is(:hover, :focus)::after {
-  background: hsla(0, 0%, 100%, 0.1);
-  backdrop-filter: blur(0.5px);
+.portfolio-list > li:nth-child(even) .card-content { margin-inline-start: auto; }
+
+.portfolio-card .card-subtitle {
+  color: var(--orange-soda);
+  margin-block-end: 5px;
 }
 
-.project-card .card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
+.portfolio-card .card-title {
+  max-width: 20ch;
+  margin-block-end: 20px;
+  color: white;
 }
 
-.project-card .card-title { margin-bottom: 10px; }
-
-.project-card :is(.card-title, .publish-date) {
-  background: var(--bg-primary);
-  padding: 6px 12px;
-  width: max-content;
-  box-shadow: var(--shadow-1);
-  transform: translateY(20px);
-  opacity: 0;
-  transition: var(--transition-1);
-}
-
-.project-card .publish-date {
+.portfolio-card .btn-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: var(--fs-6);
-  color: var(--color-primary);
-  transition-delay: 0s;
+  text-transform: uppercase;
 }
 
-.project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
-  transform: translateY(0);
-  opacity: 1;
+.portfolio-card .btn-link ion-icon {
+  color: var(--orange-soda);
+  font-size: 1.6rem;
 }
-
-.project-card:is(:hover, :focus) .publish-date { transition-delay: 0.1s; }
-
-.load-more {
-  font-size: var(--fs-4);
-  color: var(--raw-seinna);
-  text-decoration: underline;
-  margin-inline: auto;
-}
-
-
 
 
 
@@ -1011,7 +996,20 @@ textarea.input-field {
 }
 
 
+@media (min-width: 768px) {
 
+  /**
+   * PORTFOLIO
+   */
+
+  .portfolio-card {
+    background-size: 115%;
+    padding-inline: 80px;
+  }
+
+  .portfolio-card:is { background-size: 130%; }
+}
+  
 
 
 /**
